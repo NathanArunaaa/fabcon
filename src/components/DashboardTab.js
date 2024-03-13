@@ -2,12 +2,13 @@ import React from "react";
 
 const DashboardTab = () => {
   return (
-    <div class=" p-4 pt-20 sm:ml-64 dark:bg-gray-800">
+    <div className="p-4 pt-20 sm:ml-64 dark:bg-gray-800">
+
       <div className="p-4 mb-4 text-blue-800 border border-blue-300 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400 dark:border-blue-800" role="alert">
         <div className="flex items-center">
           <span className="sr-only">Info</span>
           <h3 className="text-lg font-medium text-green-300 pb-2">
-            Completed Fabrications
+            Completed Fabrications: 0
           </h3>
         </div>
         <div className="flex">
@@ -35,14 +36,12 @@ const DashboardTab = () => {
           </button>
         </div>
       </div>
-
-
 
       <div className="p-4 mb-4 text-blue-800 border border-blue-300 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400 dark:border-blue-800" role="alert">
         <div className="flex items-center">
           <span className="sr-only">Info</span>
           <h3 className="text-lg font-medium text-yellow-200 pb-2">
-            Fabrications In Progress
+            Fabrications In Progress: 0
           </h3>
         </div>
         <div className="flex">
@@ -71,12 +70,11 @@ const DashboardTab = () => {
         </div>
       </div>
 
-      
       <div className="p-4 mb-4 text-blue-800 border border-blue-300 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400 dark:border-blue-800" role="alert">
         <div className="flex items-center">
           <span className="sr-only">Info</span>
           <h3 className="text-lg font-medium text-red-400 pb-2">
-            Failed Fabrications 
+            Failed Fabrications: 0
           </h3>
         </div>
         <div className="flex">
@@ -105,54 +103,47 @@ const DashboardTab = () => {
         </div>
       </div>
 
-
-      
-<div class="max-w-sm w-full border border-blue-700 bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6">
-  <div class="flex justify-between border-gray-200 border-b dark:border-gray-700 pb-3">
-    <dl>
-      <dt class="text-base font-normal text-gray-500 dark:text-gray-400 pb-1">Total Fabrication Cost</dt>
-      <dd class="leading-none text-3xl font-bold text-gray-900 dark:text-white">$5,405</dd>
-    </dl>
-    <div>
-      <span class="bg-green-100 text-green-800 text-xs font-medium inline-flex items-center px-2.5 py-1 rounded-md dark:bg-green-900 dark:text-green-300">
-        <svg class="w-2.5 h-2.5 me-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 14">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13V1m0 0L1 5m4-4 4 4"/>
-        </svg>
-        Cost rate 23.5%
-      </span>
-    </div>
-  </div>
-
-  <div class="grid grid-cols-2 py-3">
-    <dl>
-      <dt class="text-base font-normal text-gray-500 dark:text-gray-400 pb-1">Dp Budget</dt>
-      <dd class="leading-none text-xl font-bold text-green-500 dark:text-green-400">$23,635</dd>
-    </dl>
-    <dl>
-      <dt class="text-base font-normal text-gray-500 dark:text-gray-400 pb-1">Used Budget</dt>
-      <dd class="leading-none text-xl font-bold text-red-600 dark:text-red-500">-$18,230</dd>
-    </dl>
-  </div>
-
-  <div id="bar-chart"></div>
-    <div class="grid grid-cols-1 items-center border-gray-200 border-t dark:border-gray-700 justify-between">
-      <div class="flex justify-between items-center pt-5">
-       
-       
-        <a
-          href="#"
-          class="uppercase text-sm font-semibold inline-flex items-center rounded-lg text-blue-600 hover:text-blue-700 dark:hover:text-blue-500  hover:bg-gray-100 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 ">
-          Fabrication Report
-          <svg class="w-2.5 h-2.5 ms-1.5 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-          </svg>
-        </a>
+      <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+              <th scope="col" className="p-4">
+                <div className="flex items-center">
+                  <input id="checkbox-all-search" type="checkbox" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                  <label htmlFor="checkbox-all-search" className="sr-only">checkbox</label>
+                </div>
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Fabrication
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Production Type
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Cost
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {/* Your table rows */}
+          </tbody>
+        </table>
+        <nav className="flex items-center flex-column flex-wrap md:flex-row justify-between pt-4" aria-label="Table navigation">
+          <span className="text-sm font-normal text-gray-500 dark:text-gray-400 mb-4 md:mb-0 block w-full md:inline md:w-auto">Showing <span className="font-semibold text-gray-900 dark:text-white">1-10</span> of <span className="font-semibold text-gray-900 dark:text-white">1000</span></span>
+          <ul className="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
+            <li>
+              <a href="#" className="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</a>
+            </li>
+            {/* Pagination links */}
+            <li>
+              <a href="#" className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</a>
+            </li>
+            <li>
+              <a href="#" className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
+            </li>
+          </ul>
+        </nav>
       </div>
-    </div>
-</div>
-
-
-
     </div>
   );
 };
