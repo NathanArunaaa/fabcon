@@ -9,6 +9,7 @@ import EquipmentTab from "../components/EquipmentTab";
 import InboxTab from "../components/InboxTab";
 import TeamTab from "../components/TeamTab";
 import CreateTab from "../components/CreateTab";
+import AdminTab from "../components/AdminTab";
 
 const DashboardPage = () => {
   const user = useAuth();
@@ -45,6 +46,8 @@ const DashboardPage = () => {
         return <EquipmentTab />;
       case "create":
         return <CreateTab />;
+      case "admin":
+        return <AdminTab />;
       default:
         return <DashboardTab />;
     }
@@ -103,7 +106,6 @@ const DashboardPage = () => {
                 }`}
                 onClick={() => handleTabChange("dashboard")}
               >
-               
                 <span class="ms-3">Dashboard</span>
               </a>
             </li>
@@ -114,7 +116,6 @@ const DashboardPage = () => {
                 }`}
                 onClick={() => handleTabChange("inbox")}
               >
-                
                 <span class="flex-1 ms-3 whitespace-nowrap">Inbox</span>
                 <span class="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">
                   3
@@ -128,7 +129,6 @@ const DashboardPage = () => {
                 }`}
                 onClick={() => handleTabChange("team")}
               >
-                
                 <span class="flex-1 ms-3 whitespace-nowrap">Team</span>
               </a>
             </li>
@@ -141,8 +141,6 @@ const DashboardPage = () => {
                 }`}
                 onClick={() => handleTabChange("equipment")}
               >
-               
-
                 <span class="flex-1 ms-3 whitespace-nowrap">Equipment</span>
               </a>
             </li>
@@ -154,7 +152,6 @@ const DashboardPage = () => {
                 }`}
                 onClick={() => handleTabChange("create")}
               >
-              
                 <span class="flex-1 ms-3 whitespace-nowrap">Create</span>
               </a>
             </li>
@@ -193,15 +190,16 @@ const DashboardPage = () => {
                 </button>
               </div>
               <p class="mb-3 text-sm text-blue-800 dark:text-blue-400">
-                You are currently logged in as {user.email || "User"}. Only
-                authorized users at Laval Senior Academy can request a
-                fabrication
+                You are currently logged in as {user.email || "User"}. If you
+                are an admin, you can manage your organization and team members
+                by clicking the button below.
               </p>
               <a
+                onClick={() => handleTabChange("admin")}
                 class="text-sm text-blue-800 underline font-medium hover:text-blue-900 dark:text-blue-400 dark:hover:text-blue-300"
                 href="#"
               >
-                Request a fabrication
+                Admin Page
               </a>
             </div>
             <li>
