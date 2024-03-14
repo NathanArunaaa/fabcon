@@ -73,12 +73,11 @@ const TeamTab = ({ currentUser }) => {
     }
   }, [orgId]);
 
-  console.log("Users:", orgId, users);
 
   return (
     <div class="p-4 pt-20 sm:ml-64 dark:bg-gray-800">
       <h1 className="pb-3 text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-        {orgName} {/* Display organization name */}
+        {orgName} 
       </h1>
       {users.map((user) => (
         <ProfileCard key={user.userId} user={user} />

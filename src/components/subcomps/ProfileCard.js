@@ -18,7 +18,6 @@ const ProfileCard = ({ user }) => {
           >
             <path d="M10 0C4.612 0 0 5.336 0 7c0 1.742 3.546 7 10 7 6.454 0 10-5.258 10-7 0-1.664-4.612-7-10-7Zm0 10a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z" />
           </svg>
-          <span className="sr-only">Info</span>
           <h3 className="text-lg font-medium">{user.email}</h3>
         </div>
         <div className="mt-2 mb-4 text-sm">
@@ -29,7 +28,7 @@ const ProfileCard = ({ user }) => {
         <div className="flex">
           <button
             type="button"
-            className="text-white bg-blue-800 hover:bg-blue-900 focus:ring-4 focus:outline-none focus:ring-blue-200 font-medium rounded-lg text-xs px-3 py-1.5 me-2 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            className="text-white bg-blue-800 hover:bg-blue-900  focus:outline-none focus:ring-blue-200 font-medium rounded-lg text-xs px-3 py-1.5 me-2 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
             <svg
               className="me-2 h-3 w-3"

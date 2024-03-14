@@ -1,8 +1,8 @@
 // DashboardPage.js
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useAuth } from "../auth";
-import { auth } from "../firebase";
+import { auth, db } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import DashboardTab from "../components/DashboardTab";
 import EquipmentTab from "../components/EquipmentTab";
@@ -17,6 +17,8 @@ const DashboardPage = () => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("dashboard"); // State to track the active tab
 
+
+  
   const handleTabChange = (tabName) => {
     setActiveTab(tabName);
   };
@@ -41,7 +43,7 @@ const DashboardPage = () => {
       case "inbox":
         return <InboxTab />;
       case "team":
-        return <TeamTab orgId={user.organizationCode} />;
+        return <TeamTab  />;
       case "equipment":
         return <EquipmentTab />;
       case "create":
