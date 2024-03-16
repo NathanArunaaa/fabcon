@@ -41,6 +41,7 @@ const CreateTab = () => {
   const [equipmentType, setEquipmentType] = useState("3DP");
   const [fileUrl, setFileUrl] = useState("");
   const orgId = useUserOrgId(); // Fetch orgId using custom hook
+  const user = useAuth(); // Get currently logged-in user
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -58,7 +59,8 @@ const CreateTab = () => {
         department,
         equipmentType,
         fileUrl,
-        timestamp: new Date(),
+        timestamp: new Date().toString(), // Convert timestamp to string
+        userEmail: user.email, // Include user's email
       });
 
       // Obtain the document ID of the newly created request
