@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { db, storage } from "../firebase";
-import { collection, addDoc, updateDoc, arrayUnion, doc, query, where, getDocs } from "firebase/firestore";
+import { collection, addDoc, updateDoc, arrayUnion, doc, query, where, increment, getDocs } from "firebase/firestore";
 import { useAuth } from "../auth";
 
 // Custom hook to fetch user's organization ID
@@ -72,6 +72,16 @@ const CreateTab = () => {
         requestIds: arrayUnion(requestId),
       });
 
+       // Update the user's document to increment the fabricationsInProgress field by 1
+       const userDocRef = doc(db, "users", user.uid);
+       await updateDoc(userDocRef, {
+         fabricationsInProgress: increment(1),
+         pendingRequest: arrayUnion(requestId), 
+
+       });
+
+
+
       // Clear form fields after successful submission
       setTimeout(() => {
         setItemName("");
@@ -132,18 +142,22 @@ const CreateTab = () => {
 
         {/* Department */}
         <div className="mb-6">
-          <label htmlFor="department" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+          <label htmlFor="equipmentType" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
             Department
           </label>
-          <input
-            type="text"
+          <select
             id="department"
-            value={department}
+            value={equipmentType}
             onChange={(e) => setDepartment(e.target.value)}
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Department requesting the item"
-            required
-          />
+          >
+            <option value="Science">Science</option>
+            <option value="Art">Art</option>
+            <option value="French">French</option>
+            <option value="English">English</option>
+            <option value="Ethics">Ethics</option>
+            <option value="History">History</option>
+          </select>
         </div>
 
         {/* Equipment Type */}
@@ -159,21 +173,12 @@ const CreateTab = () => {
           >
             <option value="3DP">Ender P1s</option>
             <option value="CNC">CNC Router</option>
+            <option value="Vinyl">Vinyl Cutter</option>
           </select>
         </div>
 
         {/* File Input */}
-        <div className="mb-6">
-          <label htmlFor="fileInput" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-            Upload file
-          </label>
-          <input
-            id="fileInput"
-            type="file"
-            onChange={handleFileChange}
-            className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-          />
-        </div>
+        
 
         {/* File URL */}
         <div className="mb-6">
@@ -187,6 +192,18 @@ const CreateTab = () => {
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="Url to files if they exceed 10MB"
             required
+          />
+        </div>
+
+        <div className="mb-6">
+          <label htmlFor="fileInput" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+            Upload file
+          </label>
+          <input
+            id="fileInput"
+            type="file"
+            onChange={handleFileChange}
+            className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
           />
         </div>
 

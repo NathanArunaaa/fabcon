@@ -1,6 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { db } from "../firebase";
+import { useAuth } from "../auth";
 
 const DashboardTab = () => {
+  const [fabricationsInProgress, setFabricationsInProgress] = useState(0);
+  const user = useAuth();
+
+  useEffect(() => {
+    const fetchFabricationsInProgress = async () => {
+      try {
+        // Check if a user is logged in
+        if (user) {
+          const userDocRef = db.collection("users").doc(user.uid);
+          const userDoc = await userDocRef.get();
+          if (userDoc.exists) {
+            const userData = userDoc.data();
+            // Set fabricationsInProgress state to the value from Firestore document
+            setFabricationsInProgress(userData.fabricationsInProgress || 0);
+          } else {
+            console.error("User document does not exist.");
+          }
+        } else {
+          console.error("No user is currently logged in.");
+        }
+      } catch (error) {
+        console.error("Error fetching fabrications in progress:", error.message);
+      }
+    };
+
+    fetchFabricationsInProgress();
+  }, [user]); // Trigger useEffect when the user changes
+
+  
   return (
     <div className="p-4 pt-20 sm:ml-64 dark:bg-gray-800">
 
@@ -8,7 +39,7 @@ const DashboardTab = () => {
         <div className="flex items-center">
           <span className="sr-only">Info</span>
           <h3 className="text-lg font-medium text-green-300 pb-2">
-            Completed Fabrications: 0
+            Completed Fabrications: {fabricationsInProgress}
           </h3>
         </div>
         <div className="flex">
@@ -142,8 +173,14 @@ const DashboardTab = () => {
               <a href="#" className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
             </li>
           </ul>
+          
         </nav>
+    
       </div>
+
+      
+
+
     </div>
   );
 };

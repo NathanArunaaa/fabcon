@@ -51,7 +51,7 @@ const EquipmentTab = () => {
           <a href="#">
             <img
               class="rounded-t-lg"
-              src="https://cdn.shopifycdn.net/s/files/1/0584/7236/6216/files/Frame_1123860796.png?v=1698718628"
+              src="https://static.wixstatic.com/media/1cee9f_10cf92e1cafd473cbc269cc8e6f8ee3d~mv2.png/v1/fill/w_980,h_590,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/1cee9f_10cf92e1cafd473cbc269cc8e6f8ee3d~mv2.png"
               alt=""
             />
           </a>

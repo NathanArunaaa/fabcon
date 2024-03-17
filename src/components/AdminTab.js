@@ -105,7 +105,7 @@ const AdminTab = () => {
               <RequestCard key={index} request={request} />
             ))
           ) : (
-            <p>No requests found.</p>
+            <p>Loading...</p>
           )}
         </div>
       ) : (

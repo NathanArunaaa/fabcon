@@ -154,7 +154,7 @@ const DashboardPage = () => {
                 }`}
                 onClick={() => handleTabChange("create")}
               >
-                <span class="flex-1 ms-3 whitespace-nowrap">Create</span>
+                <span class="flex-1 ms-3 whitespace-nowrap text-green-300">+ Create </span>
               </a>
             </li>
 
@@ -231,6 +231,12 @@ const DashboardPage = () => {
         </div>
       </aside>
       {renderActiveTab()}
+      <footer class="fixed bottom-0 left-0 w-full bg-white dark:bg-gray-800">
+    <div class="w-full max-w-screen-xl p-4 flex items-center justify-center">
+        <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">Fabrication Console Created By: Nathan Aruna Montreal, QC 2024</span>
+    </div>
+</footer>
+
     </div>
   );
 };
