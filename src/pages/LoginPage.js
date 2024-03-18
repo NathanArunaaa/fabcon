@@ -2,12 +2,21 @@ import React, { useState } from "react";
 import { auth } from "../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../auth";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const [error, setError] = useState(null); // New state for error message
+  const user = useAuth();
+
+  if (user) {
+    // Redirect to login if user is not authenticated
+    navigate("/dashboard");
+    return null; 
+  }
+
 
   const handleLogin = async (e) => {
     e.preventDefault();

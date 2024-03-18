@@ -1,24 +1,73 @@
 // RequestCard.js
-import React, { useState, useEffect } from "react";
-import { Button, Modal } from 'flowbite-react';
-import type { CustomFlowbiteTheme } from 'flowbite-react';
+import React, { useState } from "react";
+import {  Modal } from 'flowbite-react';
+import { db } from "../../firebase"; // Import Firebase Firestore instance
+import { doc, updateDoc, arrayRemove, arrayUnion, getDoc } from "firebase/firestore"; // Import Firestore update methods
 
-const RequestCard = ({ request }) => {
-
+const RequestCard = ({ request, organizationId }) => {
   const [openModal, setOpenModal] = useState(false);
 
-  const handleViewMore = (id) => {
-    console.log("View more info for request with ID:", id);
-  };
+  const handleMarkCompleted = async (id) => {
+  try {
+    console.log("Marking request as completed. Request ID:", id);
+    console.log("Organization ID:", organizationId);
 
-  const handleMarkCompleted = (id) => {
-    console.log("Mark request with ID:", id, "as completed");
-  };
+    console.log("Request IDs in organization:", request);
 
-  const handleMarkFailed = (id) => {
-    console.log("Mark request with ID:", id, "as failed");
-  };
+    // Get the organization document
+    const orgRef = doc(db, "organizations", organizationId);
+    const orgDoc = await getDoc(orgRef);
 
+    if (orgDoc.exists()) {
+      const orgData = orgDoc.data();
+      const requestIds = orgData.requestIds || []; // Ensure requestIds is initialized as an empty array
+      console.log("Request IDs in organization:", requestIds);
+
+      if (requestIds.includes(id)) {
+        // Update the completedIds array by removing the request ID from the requestIds array and adding it to completedIds
+        await updateDoc(orgRef, {
+          requestIds: arrayRemove(id),
+          completedIds: arrayUnion(id)
+        });
+        console.log(`Request with ID ${id} marked as completed.`);
+      } else {
+        console.error(`Request with ID ${id} does not exist in the organization's requestIds.`);
+      }
+    } else {
+      console.error(`Organization with ID ${organizationId} does not exist.`);
+    }
+  } catch (error) {
+    console.error("Error marking request as completed:", error.message);
+  }
+};
+  
+  const handleMarkFailed = async (id) => {
+    try {
+      // Get the organization document
+      const orgRef = doc(db, "organizations", organizationId);
+      const orgDoc = await getDoc(orgRef);
+  
+      if (orgDoc.exists()) {
+        const orgData = orgDoc.data();
+        const requestIds = orgData.requestIds || []; // Ensure requestIds is initialized as an empty array
+  
+        if (requestIds.includes(id)) {
+          // Update the failedIds array by removing the request ID from the requestIds array and adding it to failedIds
+          await updateDoc(orgRef, {
+            requestIds: arrayRemove(id),
+            failedIds: arrayUnion(id)
+          });
+          console.log(`Request with ID ${id} marked as failed.`);
+        } else {
+          console.error(`Request with ID ${id} does not exist in the organization's requestIds.`);
+        }
+      } else {
+        console.error(`Organization with ID ${organizationId} does not exist.`);
+      }
+    } catch (error) {
+      console.error("Error marking request as failed:", error.message);
+    }
+  };
 
   return (
     <div className="p-4 mb-4 text-blue-800 border border-blue-300 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400 dark:border-blue-800">

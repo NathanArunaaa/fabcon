@@ -35,7 +35,7 @@ const DashboardPage = () => {
   if (!user) {
     // Redirect to login if user is not authenticated
     navigate("/login");
-    return null; // Prevent rendering the rest of the component
+    return null; 
   }
 
   const renderActiveTab = () => {
