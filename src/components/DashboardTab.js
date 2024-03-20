@@ -33,9 +33,9 @@ const DashboardTab = () => {
 
   
   return (
-    <div className="p-4 pt-20 sm:ml-64 dark:bg-gray-800">
+    <div className="p-4 pt-20 bg-gray-800 sm:ml-64 dark:bg-gray-800">
 
-      <div className="p-4 mb-4 text-blue-800 border border-blue-300 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400 dark:border-blue-800" role="alert">
+      <div className="p-4 mb-4 text-blue-400 border border-blue-800 rounded-lg bg-gray-800 dark:bg-gray-800 dark:text-blue-400 dark:border-blue-800" role="alert">
         <div className="flex items-center">
           <span className="sr-only">Info</span>
           <h3 className="text-lg font-medium text-green-300 pb-2">
@@ -68,7 +68,7 @@ const DashboardTab = () => {
         </div>
       </div>
 
-      <div className="p-4 mb-4 text-blue-800 border border-blue-300 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400 dark:border-blue-800" role="alert">
+      <div className="p-4 mb-4 text-blue-400 border border-blue-800 rounded-lg bg-gray-800 dark:bg-gray-800 dark:text-blue-400 dark:border-blue-800" role="alert">
         <div className="flex items-center">
           <span className="sr-only">Info</span>
           <h3 className="text-lg font-medium text-yellow-200 pb-2">
@@ -101,7 +101,7 @@ const DashboardTab = () => {
         </div>
       </div>
 
-      <div className="p-4 mb-4 text-blue-800 border border-blue-300 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400 dark:border-blue-800" role="alert">
+      <div className="p-4 mb-4 text-blue-400 border border-blue-800 rounded-lg bg-gray-800 dark:bg-gray-800 dark:text-blue-400 dark:border-blue-800" role="alert">
         <div className="flex items-center">
           <span className="sr-only">Info</span>
           <h3 className="text-lg font-medium text-red-400 pb-2">

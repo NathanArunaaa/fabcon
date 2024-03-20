@@ -56,7 +56,7 @@ const DashboardPage = () => {
   };
   return (
     <div>
-      <nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+      <nav class="fixed top-0 z-50 w-full bg-gray-800 border-b border-gray-700 dark:bg-gray-800 dark:border-gray-700">
         <div class="px-3 py-3 lg:px-5 lg:pl-3">
           <div class="flex items-center justify-between">
             <div class="flex items-center justify-start rtl:justify-end">
@@ -65,7 +65,7 @@ const DashboardPage = () => {
                 data-drawer-toggle="logo-sidebar"
                 aria-controls="logo-sidebar"
                 type="button"
-                class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                class="inline-flex items-center p-2 text-sm text-white rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
               >
                 <span class="sr-only">Open sidebar</span>
                 <svg
@@ -83,7 +83,7 @@ const DashboardPage = () => {
                 </svg>
               </button>
               <a href="" class="flex ms-2 md:me-24">
-                <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">
+                <span class=" text-white self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">
                   Fabrication Console
                 </span>
               </a>
@@ -94,16 +94,16 @@ const DashboardPage = () => {
 
       <aside
         id="logo-sidebar"
-        class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
+        class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-gray-800 border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
         aria-label="Sidebar"
       >
-        <div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
+        <div class="h-full px-3 pb-4 overflow-y-auto bg-gray-800 dark:bg-gray-800">
           <ul class="space-y-2 font-medium">
             <li>
               <a
-                className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group ${
+                className={`flex items-center p-2 text-white rounded-lg dark:text-white hover:bg-gray-700 dark:hover:bg-gray-700 group ${
                   activeTab === "dashboard"
-                    ? "bg-blue-200 dark:bg-blue-700"
+                    ? "bg-blue-700 dark:bg-blue-700"
                     : ""
                 }`}
                 onClick={() => handleTabChange("dashboard")}
@@ -112,22 +112,26 @@ const DashboardPage = () => {
               </a>
             </li>
             <li>
-              <a
-                className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group ${
-                  activeTab === "inbox" ? "bg-blue-200 dark:bg-blue-700" : ""
+            <a
+                className={`flex items-center p-2 text-white rounded-lg dark:text-white hover:bg-gray-700 dark:hover:bg-gray-700 group ${
+                  activeTab === "inbox"
+                    ? "bg-blue-700 dark:bg-blue-700"
+                    : ""
                 }`}
                 onClick={() => handleTabChange("inbox")}
               >
                 <span class="flex-1 ms-3 whitespace-nowrap">Inbox</span>
-                <span class="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">
+                <span class="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-300 bg-blue-900 rounded-full dark:bg-blue-900 dark:text-blue-300">
                   3
                 </span>
               </a>
             </li>
             <li>
-              <a
-                className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group ${
-                  activeTab === "team" ? "bg-blue-200 dark:bg-blue-700" : ""
+            <a
+                className={`flex items-center p-2 text-white rounded-lg dark:text-white hover:bg-gray-700 dark:hover:bg-gray-700 group ${
+                  activeTab === "team"
+                    ? "bg-blue-700 dark:bg-blue-700"
+                    : ""
                 }`}
                 onClick={() => handleTabChange("team")}
               >
@@ -135,10 +139,10 @@ const DashboardPage = () => {
               </a>
             </li>
             <li>
-              <a
-                className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group ${
+            <a
+                className={`flex items-center p-2 text-white rounded-lg dark:text-white hover:bg-gray-700 dark:hover:bg-gray-700 group ${
                   activeTab === "equipment"
-                    ? "bg-blue-200 dark:bg-blue-700"
+                    ? "bg-blue-700 dark:bg-blue-700"
                     : ""
                 }`}
                 onClick={() => handleTabChange("equipment")}
@@ -148,9 +152,11 @@ const DashboardPage = () => {
             </li>
 
             <li>
-              <a
-                className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group ${
-                  activeTab === "create" ? "bg-blue-200 dark:bg-blue-700" : ""
+            <a
+                className={`flex items-center p-2 text-white rounded-lg dark:text-white hover:bg-gray-700 dark:hover:bg-gray-700 group ${
+                  activeTab === "create"
+                    ? "bg-blue-700 dark:bg-blue-700"
+                    : ""
                 }`}
                 onClick={() => handleTabChange("create")}
               >
@@ -160,45 +166,23 @@ const DashboardPage = () => {
 
             <div
               id="dropdown-cta"
-              class="p-4 mt-6 rounded-lg bg-blue-50 dark:bg-blue-900"
+              class="p-4 mt-6 rounded-lg bg-blue-900 dark:bg-blue-900"
               role="alert"
             >
               <div class="flex items-center mb-3">
-                <span class="bg-orange-100 text-orange-800 text-sm font-semibold me-2 px-2.5 py-0.5 rounded dark:bg-orange-200 dark:text-orange-900">
+                <span class="bg-orange-200 text-orange-900 text-sm font-semibold me-2 px-2.5 py-0.5 rounded dark:bg-orange-200 dark:text-orange-900">
                   Welcome
                 </span>
-                <button
-                  type="button"
-                  class="ms-auto -mx-1.5 -my-1.5 bg-blue-50 inline-flex justify-center items-center w-6 h-6 text-blue-900 rounded-lg focus:ring-2 focus:ring-blue-400 p-1 hover:bg-blue-200 h-6 w-6 dark:bg-blue-900 dark:text-blue-400 dark:hover:bg-blue-800"
-                  data-dismiss-target="#dropdown-cta"
-                  aria-label="Close"
-                >
-                  <span class="sr-only">Close</span>
-                  <svg
-                    class="w-2.5 h-2.5"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 14 14"
-                  >
-                    <path
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
-                    />
-                  </svg>
-                </button>
+               
               </div>
-              <p class="mb-3 text-sm text-blue-800 dark:text-blue-400">
+              <p class="mb-3 text-sm text-blue-400 dark:text-blue-400">
                 You are currently logged in as {user.email || "User"}. If you
                 are an admin, you can manage your organization and team members
                 by clicking the button below.
               </p>
               <a
                 onClick={() => handleTabChange("admin")}
-                class="text-sm text-blue-800 underline font-medium hover:text-blue-900 dark:text-blue-400 dark:hover:text-blue-300"
+                class="text-sm text-blue-400 underline font-medium hover:text-blue-300 dark:text-blue-400 dark:hover:text-blue-300"
                 href="#"
               >
                 Admin Page
@@ -207,10 +191,10 @@ const DashboardPage = () => {
             <li>
               <button
                 onClick={handleLogout}
-                class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                class="flex items-center p-2 text-white rounded-lg dark:text-white hover:bg-gray-700 dark:hover:bg-gray-700 group"
               >
                 <svg
-                  class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                  class="flex-shrink-0 w-5 h-5 text-gray-400 transition duration-75 dark:text-gray-400 "
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -231,7 +215,7 @@ const DashboardPage = () => {
         </div>
       </aside>
       {renderActiveTab()}
-      <footer class="fixed bottom-0 left-0 w-full bg-white dark:bg-gray-800">
+      <footer class="fixed bottom-0 left-0 w-full bg-gray-800 dark:bg-gray-800">
     <div class="w-full max-w-screen-xl p-4 flex items-center justify-center">
         <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">Fabrication Console Created By: Nathan Aruna Montreal, QC 2024</span>
     </div>
